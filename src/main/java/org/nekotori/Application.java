@@ -149,7 +149,7 @@ public class Application {
                             .toList())));
                     chatRequest.setMessages(list);
                     log.info("send request:{}", JSONUtil.toJsonPrettyStr(chatRequest));
-                    DsClient.invoke(chatRequest, resp -> {
+                    DsClient.invoke("",chatRequest, resp -> {
                         if(Math.random()<0.4){
                             var message = resp.replaceAll("\\(.*\\)", "").replaceAll("（.*）", "");
                             SovitsClient.ttsV4(message,5,fileUri->{

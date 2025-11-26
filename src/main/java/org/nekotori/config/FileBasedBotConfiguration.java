@@ -44,6 +44,7 @@ public class FileBasedBotConfiguration {
     private OneBotWs onebot;
 
 
+
     @Data
     public static class QQAccount {
 
@@ -66,5 +67,10 @@ public class FileBasedBotConfiguration {
         private String host;
         private String token;
         private String msg;
+    }
+
+    @Data
+    public static class Deepseek {
+        private String apiKey;
     }
 }

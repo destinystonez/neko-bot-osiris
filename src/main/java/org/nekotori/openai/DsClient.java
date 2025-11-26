@@ -26,8 +26,7 @@ public class DsClient {
     private static final ExecutorService dsExecutor = new ThreadPoolExecutor(4,20,1000, TimeUnit.SECONDS,new ArrayBlockingQueue<>(5));
 
     private static final String dpUrl = "https://api.lkeap.cloud.tencent.com/v1";
-    private static final String dpApiKey = "sk-NQ0guoreNhGYCQXY1WAbDwVMnvJU4gZemqmtNPpf2pBnLING";
-    public static void invoke(ChatRequest chatRequest, Consumer<String> bigmodelResponseListener){
+    public static void invoke(String dpApiKey,ChatRequest chatRequest, Consumer<String> bigmodelResponseListener){
         dsExecutor.execute(()->{
             chatRequest.setStream(true);
             RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),

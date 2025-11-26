@@ -161,27 +161,4 @@ public class NanoBananaClient {
             }
         });
     }
-    public static void main(String[] args) {
-        NanoBananaClient client = new NanoBananaClient("sk-df622582ad494d62881519381f9ac2c0");
-
-        try {
-            log.info("Starting image generation...");
-
-            // 配置选项
-            GenerateOptions options = new GenerateOptions();
-            options.setModel("nano-banana-pro");
-
-            String taskId = client.generateImage("beautiful girl", options);
-
-            log.info("Task ID: {}. Waiting for completion...", taskId);
-
-            String result = client.waitForCompletion(taskId);
-
-            log.info("Image generated successfully!");
-            log.info("Result Image URL: " + result);
-
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        }
-    }
 }
