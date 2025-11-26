@@ -1,0 +1,70 @@
+package org.nekotori.config;
+
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.setting.yaml.YamlUtil;
+import lombok.Data;
+import lombok.Getter;
+
+import java.io.File;
+
+/**
+ * @author nekotori
+ * configuration of bot
+ */
+
+@Data
+public class FileBasedBotConfiguration {
+
+    @Getter
+    public static FileBasedBotConfiguration INSTANCE;
+
+    public static final String DEFAULT_CONFIG_LOCATION = "bot/config.yaml";
+
+    static  {
+        var configStream = FileUtil.getInputStream(new File(DEFAULT_CONFIG_LOCATION));
+        INSTANCE = YamlUtil.load(configStream, FileBasedBotConfiguration.class);
+    }
+
+    public static FileBasedBotConfiguration resolveFile(File file){
+        var configStream = FileUtil.getInputStream(file);
+        INSTANCE = YamlUtil.load(configStream, FileBasedBotConfiguration.class);
+        return INSTANCE;
+    }
+
+    private String deviceInfo;
+
+    private QQAccount qq;
+
+    private Discord discord;
+
+    private Long admin;
+
+    private String gptKey;
+
+    private OneBotWs onebot;
+
+
+    @Data
+    public static class QQAccount {
+
+        private Long account;
+
+        private String passwd;
+    }
+
+    @Data
+    public static class Discord {
+
+        private String token;
+
+        private String proxyHost;
+
+        private int proxyPort;
+    }
+    @Data
+    public static class OneBotWs {
+        private String host;
+        private String token;
+        private String msg;
+    }
+}
