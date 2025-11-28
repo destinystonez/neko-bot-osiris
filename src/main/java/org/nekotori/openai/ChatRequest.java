@@ -15,4 +15,6 @@ public class ChatRequest {
     String model;
 
     Boolean enable_search;
+
+    Boolean think;
 }

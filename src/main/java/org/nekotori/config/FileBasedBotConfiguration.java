@@ -43,6 +43,8 @@ public class FileBasedBotConfiguration {
 
     private OneBotWs onebot;
 
+    private Deepseek deepseek;
+
 
 
     @Data

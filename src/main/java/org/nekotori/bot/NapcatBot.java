@@ -1,5 +1,6 @@
 package org.nekotori.bot;
 
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.nekotori.config.FileBasedBotConfiguration;
 import org.nekotori.event.NapCatMessageEvent;
@@ -16,6 +17,7 @@ import java.net.URISyntaxException;
 public class NapcatBot implements NekoBot<Event, MessageEvent>{
 
     private NapCatMessageClient client;
+    @Getter
     private FileBasedBotConfiguration config;
 
     public NapcatBot(){

@@ -127,7 +127,7 @@ public class GroupChatHistoryPersistence {
         ReentrantLock lock = getGroupLock(groupId);
         lock.lock();
         try {
-            var sql = "SELECT * FROM chat_history WHERE group_id = ? AND user_id = ? ORDER BY time DESC LIMIT 20";
+            var sql = "SELECT * FROM chat_history WHERE group_id = ? AND user_id = ? ORDER BY time DESC LIMIT 10";
             try (var conn = getConnection(); var preparedStatement = conn.prepareStatement(sql)) {
                 preparedStatement.setLong(1, groupId);
                 preparedStatement.setLong(2, userId);
